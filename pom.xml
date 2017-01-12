@@ -9,6 +9,10 @@
   <name>buildnumber-plugin-test</name>
   <url>http://maven.apache.org</url>
 
+  <scm>
+    <connection>scm:git:https://github.com/omrsin/buildnumber-plugin-test</connection>
+  </scm>
+
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -41,6 +45,19 @@
         <configuration>
           <doCheck>true</doCheck>
           <doUpdate>true</doUpdate>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.1</version>
+        <configuration>
+          <archive>
+            <manifestEntries>
+              <scmCommitId>${buildNumber}</scmCommitId>
+            </manifestEntries>
+          </archive>
         </configuration>
       </plugin>
     </plugins>
